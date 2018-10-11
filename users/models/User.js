@@ -71,7 +71,7 @@ const UserSchema = new Schema({
         type: String,
         required: true
       },
-      precentage: {
+      percentage: {
         type: Number,
         required: true
       }

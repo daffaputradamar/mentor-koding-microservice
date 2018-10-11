@@ -4,6 +4,8 @@
   "description": "",
   "main": "chats.js",
   "scripts": {
+    "start": "node users.js",
+    "dev": "nodemon users.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

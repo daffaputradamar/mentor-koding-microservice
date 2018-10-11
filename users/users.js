@@ -16,7 +16,7 @@ const path = "/graphql";
 app.get("/", (req, res) => {
   User.create({
     username: "daffacoding",
-    name: "Daffa",
+    name: "Akbar",
     password: "inipassword",
     profilePic: "photo.png",
     email: "daffa@gmail.com",
@@ -34,14 +34,14 @@ app.get("/", (req, res) => {
     skills: [
       {
         skill: "NodeJS",
-        precentage: 80
+        percentage: 80
       },
       {
         skill: "ReactJS",
-        precentage: 50
+        percentage: 50
       }
     ]
-  }).then(user => console.log("User created"));
+  }).then(user => res.redirect("/graphql"));
 });
 
 app.get("/users", (req, res) => {
