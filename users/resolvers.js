@@ -1,4 +1,5 @@
 const User = require("./models/User");
+const bcrypt = require("bcryptjs");
 
 const resolvers = {
   Query: {
@@ -25,8 +26,19 @@ const resolvers = {
     }
   },
   Mutation: {
-    addUser: async (root, args) => {
-      return await User.create(args.user);
+    addUser: (root, args) => {
+      let newUser = args.user;
+      bcrypt
+        .genSalt(10)
+        .then(salt => {
+          bcrypt.hash(newUser.password, salt);
+        })
+        .then(hash => {
+          newUser.password = hash;
+          User.create(newUser);
+        })
+        .then(user => user)
+        .catch(err => err);
     },
     deleteUser: async (root, _id) => {
       return await User.findByIdAndRemove(_id);
@@ -59,6 +71,12 @@ const resolvers = {
     addSkill: async (root, args) => {
       return await User.findByIdAndUpdate(args._id, {
         $push: { skills: args.skill }
+      });
+    },
+    removeSkill: async (root, args) => {
+      console.log(args);
+      return await User.findByIdAndUpdate(args._id, {
+        $pullAll: { skills: [args.skill] }
       });
     }
   }

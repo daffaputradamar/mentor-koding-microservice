@@ -80,6 +80,7 @@ const typeDefs = gql`
     updateUser(_id: ID!, user: UserUpdate!): User
     changeMentor(_id: ID!): User
     addSkill(_id: ID!, skill: [SkillInput]!): User
+    removeSkill(_id: ID!, skill: SkillInput!): User
   }
 `;
 
