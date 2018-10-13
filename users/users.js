@@ -27,7 +27,7 @@ app.get("/users", (req, res) => {
   User.find().then(users => res.json(users));
 });
 
-// app.use(verifyToken)
+// app.use(verifyToken);
 server.applyMiddleware({ app, path });
 
 app.listen(3000, () => console.log("App listening in port 3000"));

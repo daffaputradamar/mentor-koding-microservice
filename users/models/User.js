@@ -60,19 +60,7 @@ const UserSchema = new Schema({
     instagram: {
       type: String
     }
-  },
-  skills: [
-    {
-      skill: {
-        type: String,
-        required: true
-      },
-      percentage: {
-        type: Number,
-        required: true
-      }
-    }
-  ]
+  }
 });
 
 module.exports = mongoose.model("User", UserSchema);

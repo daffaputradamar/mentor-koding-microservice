@@ -1,4 +1,5 @@
 const User = require("./models/User");
+const Skill = require("./models/Skill");
 const bcrypt = require("bcryptjs");
 
 const resolvers = {
@@ -17,12 +18,18 @@ const resolvers = {
         job
         isMentor
         socialMedia
-        skills
         `
       );
     },
     user: async (root, _id) => {
       return await User.findById(_id);
+    },
+    skill: async (root, args) => {
+      console.log(await Skill.find({ userId: args.userId }));
+      return await Skill.find({ userId: args.userId });
+    },
+    skills: async () => {
+      return await Skill.find();
     }
   },
   Mutation: {
@@ -68,14 +75,17 @@ const resolvers = {
       });
     },
     addSkill: async (root, args) => {
-      return await User.findByIdAndUpdate(args._id, {
-        $push: { skills: args.skill }
+      console.log(args);
+      return await Skill.create({
+        userId: args.userId,
+        skill: args.skill,
+        percentage: args.percentage
       });
     },
     removeSkill: async (root, args) => {
-      console.log(args);
-      return await User.findByIdAndUpdate(args._id, {
-        $pullAll: { skills: [args.skill] }
+      return await Skill.remove({
+        userId: args.userId,
+        skill: args.skill
       });
     }
   }

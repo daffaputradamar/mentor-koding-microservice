@@ -8,7 +8,7 @@ ObjectId.prototype.valueOf = function() {
 
 const SkillSchema = new Schema({
   userId: {
-    type: mongoose.Types.ObjectId,
+    type: String,
     required: true
   },
   skill: {

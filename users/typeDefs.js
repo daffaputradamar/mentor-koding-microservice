@@ -2,13 +2,15 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type Skill {
+    userId: String
     skill: String
     percentage: Int
   }
 
   input SkillInput {
-    skill: String
-    percentage: Int
+    userId: String!
+    skill: String!
+    percentage: Int!
   }
 
   type SocialMedia {
@@ -37,7 +39,6 @@ const typeDefs = gql`
     job: String
     isMentor: Boolean
     socialMedia: SocialMedia
-    skills: [Skill]
   }
 
   input UserInput {
@@ -52,13 +53,11 @@ const typeDefs = gql`
     job: String!
     isMentor: Boolean
     socialMedia: SocialMediaInput
-    skills: [SkillInput]
   }
 
   input UserUpdate {
     username: String
     name: String
-    password: String
     profilePic: String
     email: String
     headline: String
@@ -72,6 +71,8 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(_id: ID!): User
+    skill(userId: ID!): [Skill]
+    skills: [Skill]
   }
 
   type Mutation {
@@ -79,8 +80,8 @@ const typeDefs = gql`
     deleteUser(_id: ID!): User
     updateUser(_id: ID!, user: UserUpdate!): User
     changeMentor(_id: ID!): User
-    addSkill(_id: ID!, skill: [SkillInput]!): User
-    removeSkill(_id: ID!, skill: SkillInput!): User
+    addSkill(userId: ID!, skill: String!, percentage: Int!): Skill
+    removeSkill(userId: ID!, skill: String!): Skill
   }
 `;
 
