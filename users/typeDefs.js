@@ -50,7 +50,7 @@ const typeDefs = gql`
     address: String!
     phone: String!
     job: String!
-    isMentor: Boolean!
+    isMentor: Boolean
     socialMedia: SocialMediaInput
     skills: [SkillInput]
   }

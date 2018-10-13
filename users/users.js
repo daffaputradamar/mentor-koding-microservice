@@ -21,12 +21,13 @@ app.use(express.json());
 
 const path = "/graphql";
 
-app.get("/", authRoutes);
+app.use("/", authRoutes);
 
 app.get("/users", (req, res) => {
   User.find().then(users => res.json(users));
 });
 
-server.applyMiddleware({ app, verifyToken, path });
+// app.use(verifyToken)
+server.applyMiddleware({ app, path });
 
 app.listen(3000, () => console.log("App listening in port 3000"));

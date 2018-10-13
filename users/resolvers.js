@@ -31,13 +31,12 @@ const resolvers = {
       bcrypt
         .genSalt(10)
         .then(salt => {
-          bcrypt.hash(newUser.password, salt);
+          bcrypt.hash(newUser.password, salt).then(hash => {
+            newUser.password = hash;
+            console.log(newUser);
+            User.create(newUser).then(user => user);
+          });
         })
-        .then(hash => {
-          newUser.password = hash;
-          User.create(newUser);
-        })
-        .then(user => user)
         .catch(err => err);
     },
     deleteUser: async (root, _id) => {

@@ -8,17 +8,17 @@ const verifyToken = require("../config/verifyToken");
 
 router.post("/api/login", (req, res) => {
   const loginUser = {
-    email: req.body.email,
+    username: req.body.username,
     password: req.body.password
   };
 
   User.findOne({
-    email: loginUser.email
+    username: loginUser.username
   }).then(user => {
     if (!user) {
       return res.sendStatus(403);
     }
-    bycript.compare(loginUser.password, user.password).then(isMatch => {
+    bcrypt.compare(loginUser.password, user.password).then(isMatch => {
       if (isMatch) {
         jwt.sign(
           {
@@ -29,7 +29,7 @@ router.post("/api/login", (req, res) => {
             email: user.email,
             isMentor: user.isMentor
           },
-          "secret",
+          "mentorkodingpw",
           (err, token) => {
             res.json({
               token
@@ -44,7 +44,7 @@ router.post("/api/login", (req, res) => {
 });
 
 router.get("/cekAuth", verifyToken, (req, res) => {
-  jwt.verify(req.token, "secret", (err, authData) => {
+  jwt.verify(req.token, "mentorkodingpw", (err, authData) => {
     if (err) {
       res.sendStatus(403);
     } else {

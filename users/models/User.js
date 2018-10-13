@@ -45,24 +45,20 @@ const UserSchema = new Schema({
   },
   isMentor: {
     type: Boolean,
-    required: true
+    default: false
   },
   socialMedia: {
     github: {
-      type: String,
-      required: true
+      type: String
     },
     linkedin: {
-      type: String,
-      required: true
+      type: String
     },
     facebook: {
-      type: String,
-      required: true
+      type: String
     },
     instagram: {
-      type: String,
-      required: true
+      type: String
     }
   },
   skills: [
