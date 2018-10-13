@@ -9,7 +9,8 @@ ObjectId.prototype.valueOf = function() {
 const SkillSchema = new Schema({
   userId: {
     type: String,
-    required: true
+    required: true,
+    ref: "User"
   },
   skill: {
     type: String,

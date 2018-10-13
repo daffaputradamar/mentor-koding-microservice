@@ -30,6 +30,7 @@ router.post("/api/login", (req, res) => {
             isMentor: user.isMentor
           },
           "mentorkodingpw",
+          { expiresIn: '1d' },
           (err, token) => {
             res.json({
               token

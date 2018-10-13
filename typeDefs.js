@@ -68,15 +68,35 @@ const typeDefs = gql`
     socialMedia: SocialMediaInput
   }
 
+  type UserSearch {
+    _id: ID
+    username: String
+    name: String
+  }
+
+  type Search {
+    _id: ID
+    userId: UserSearch
+    percentage: Int
+  }
+
+  type SkillAPI {
+    id: String
+    keyName: String
+  }
+
   type Query {
+    allSkills: [SkillAPI]
     users: [User]
     user(_id: ID!): User
     skill(userId: ID!): [Skill]
     skills: [Skill]
+    search(skill: String): [Search]
   }
 
   type Mutation {
-    addUser(user: UserInput!): User
+    createUser(user: UserInput!): User
+    login(username: String!, password: String!): String
     deleteUser(_id: ID!): User
     updateUser(_id: ID!, user: UserUpdate!): User
     changeMentor(_id: ID!): User
