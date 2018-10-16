@@ -21,15 +21,15 @@ const UserSchema = new Schema({
   },
   profilePic: {
     type: String,
-    required: true
+    default: null
   },
   email: {
     type: String,
-    required: true
+    default: null
   },
   headline: {
     type: String,
-    required: true
+    default: null
   },
   address: {
     type: String,
@@ -41,7 +41,7 @@ const UserSchema = new Schema({
   },
   job: {
     type: String,
-    required: true
+    default: null
   },
   isMentor: {
     type: Boolean,
@@ -49,17 +49,25 @@ const UserSchema = new Schema({
   },
   socialMedia: {
     github: {
-      type: String
+      type: String,
+      default: null
     },
     linkedin: {
-      type: String
+      type: String,
+      default: null
     },
     facebook: {
-      type: String
+      type: String,
+      default: null
     },
     instagram: {
-      type: String
+      type: String,
+      default: null
     }
+  },
+  skills: {
+    type: [String],
+    default: null
   }
 });
 
