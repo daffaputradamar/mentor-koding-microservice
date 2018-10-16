@@ -9,8 +9,6 @@ function verifyToken(req, res, next) {
     next();
   } else {
     req.token = "";
-    // req.token =
-    //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YmM1ZWRiMWI4ZDg2NzM1ZThlMzdlYjYiLCJpYXQiOjE1Mzk2OTgxMDMsImV4cCI6MTUzOTc4NDUwM30.Q07BzUkTyNVgj5-hbZ4FoYLR0URM9Lm6df-EEEsgEZ0";
     next();
   }
 }

@@ -93,8 +93,6 @@ const resolvers = {
     updateUser: async (root, args, context) => {
       if (context.data) {
         let user = await User.findById(context.data);
-        console.log(user);
-        console.log(args.user);
         return await user.update({
           username: args.user.username || user.username,
           name: args.user.name || user.name,
