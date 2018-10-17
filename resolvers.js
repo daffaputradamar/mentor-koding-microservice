@@ -98,7 +98,7 @@ const resolvers = {
           name: args.user.name || user.name,
           profilePic: args.user.profilePic || user.profilePic,
           email: args.user.email || user.email,
-          headline: args.user.headline || user.headline,
+          description: args.user.description || user.description,
           address: args.user.address || user.address,
           phone: args.user.phone || user.phone,
           job: args.user.job || user.job,

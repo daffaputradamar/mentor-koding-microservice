@@ -21,7 +21,7 @@ const typeDefs = gql`
     name: String
     profilePic: String
     email: String
-    headline: String
+    description: String
     address: String
     phone: String
     job: String
@@ -44,7 +44,7 @@ const typeDefs = gql`
     name: String
     profilePic: String
     email: String
-    headline: String
+    description: String
     address: String
     phone: String
     job: String

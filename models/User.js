@@ -27,7 +27,7 @@ const UserSchema = new Schema({
     type: String,
     default: null
   },
-  headline: {
+  description: {
     type: String,
     default: null
   },
