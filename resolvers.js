@@ -66,7 +66,7 @@ const resolvers = {
       });
 
       if (!user) {
-        return "Login attempted failed";
+        return "";
       }
 
       let isMatch = await bcrypt.compare(loginUser.password, user.password);
@@ -80,7 +80,7 @@ const resolvers = {
           { expiresIn: "1d" }
         );
       } else {
-        return "Login attempted failed";
+        return "";
       }
     },
     deleteUser: async (root, args, context) => {
