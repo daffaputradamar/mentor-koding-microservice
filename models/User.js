@@ -65,6 +65,10 @@ const UserSchema = new Schema({
       default: null
     }
   },
+  education: {
+    type: String,
+    default: null
+  },
   skills: {
     type: [String],
     default: null

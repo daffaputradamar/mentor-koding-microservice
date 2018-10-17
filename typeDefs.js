@@ -27,6 +27,7 @@ const typeDefs = gql`
     job: String
     isMentor: Boolean
     socialMedia: SocialMedia
+    education: String
     skills: [String]
   }
 
@@ -49,6 +50,7 @@ const typeDefs = gql`
     job: String
     isMentor: Boolean
     socialMedia: SocialMediaInput
+    education: String
     skills: [String]
   }
 

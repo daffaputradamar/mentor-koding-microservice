@@ -103,6 +103,7 @@ const resolvers = {
           phone: args.user.phone || user.phone,
           job: args.user.job || user.job,
           socialMedia: args.user.socialMedia || user.socialMedia,
+          education: args.user.education || user.education,
           skills: args.user.skills || user.skills
         });
       } else {
