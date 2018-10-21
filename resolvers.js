@@ -7,15 +7,11 @@ const User = require("./models/User");
 
 const resolvers = {
   Query: {
-    skills: async (root, args, context) => {
-      if (context.data) {
+    skills: async (root, args) => {
         const response = await axios.get(
           "https://trendyskills.com/service?q=keywords&key=z738YCPEjn4eySf9"
         );
         return response.data.keywords;
-      } else {
-        throw new AuthenticationError("Must Authenticate");
-      }
     },
     users: async (root, args, context) => {
       if (context.data) {
