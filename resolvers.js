@@ -8,10 +8,10 @@ const User = require("./models/User");
 const resolvers = {
   Query: {
     skills: async (root, args) => {
-        const response = await axios.get(
-          "https://trendyskills.com/service?q=keywords&key=z738YCPEjn4eySf9"
-        );
-        return response.data.keywords;
+      const response = await axios.get(
+        "https://trendyskills.com/service?q=keywords&key=z738YCPEjn4eySf9"
+      );
+      return response.data.keywords;
     },
     users: async (root, args, context) => {
       if (context.data) {
@@ -72,8 +72,7 @@ const resolvers = {
           {
             _id: user._id
           },
-          "mentorkodingpw",
-          { expiresIn: "1d" }
+          "mentorkodingpw"
         );
       } else {
         return "";
@@ -81,27 +80,20 @@ const resolvers = {
     },
     deleteUser: async (root, args, context) => {
       if (context.data) {
-        return await User.findByIdAndRemove(context.data);
+        return await User.findOneAndDelete({ _id: context.data });
       } else {
         throw new AuthenticationError("Must Authenticate");
       }
     },
     updateUser: async (root, args, context) => {
       if (context.data) {
-        let user = await User.findById(context.data);
-        return await user.update({
-          username: args.user.username || user.username,
-          name: args.user.name || user.name,
-          profilePic: args.user.profilePic || user.profilePic,
-          email: args.user.email || user.email,
-          description: args.user.description || user.description,
-          address: args.user.address || user.address,
-          phone: args.user.phone || user.phone,
-          job: args.user.job || user.job,
-          socialMedia: args.user.socialMedia || user.socialMedia,
-          education: args.user.education || user.education,
-          skills: args.user.skills || user.skills
-        });
+        let user = await User.findOneAndUpdate(
+          { _id: context.data },
+          {
+            $set: args.user
+          }
+        );
+        return await User.findById(context.data);
       } else {
         throw new AuthenticationError("Must Authenticate");
       }
