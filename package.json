@@ -4,8 +4,8 @@
   "description": "",
   "main": "chats.js",
   "scripts": {
-    "start": "node users.js",
-    "dev": "nodemon users.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
