@@ -46,5 +46,9 @@ module.exports = {
         ? true
         : false
     res.json({ status: found })
+  },
+  search: async (req, res) => {
+    const { skill } = req.body
+    res.json(await User.find({ skills: skill }))
   }
 }
