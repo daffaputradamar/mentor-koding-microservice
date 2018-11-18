@@ -45,7 +45,7 @@ module.exports = {
       userDB && (await isPasswordMatch(user.password, userDB.password))
         ? true
         : false
-    res.json({ status: found })
+    res.json({ user: found ? userDB : null })
   },
   search: async (req, res) => {
     const { skill } = req.body

@@ -10,4 +10,4 @@ app.use(express.json());
 
 app.use("/user", userRouter);
 
-app.listen(3000, () => console.log("Service User is listening in 3000"));
+app.listen(4000, () => console.log("Service User is listening in 4000"));
