@@ -32,7 +32,9 @@ module.exports = {
   update: async (req, res) => {
     const { user } = req.body
     const { _id } = req.params
-    res.json(await User.findOneAndUpdate({ _id }, { $set: user }))
+    res.json(
+      await User.findOneAndUpdate({ _id }, { $set: user }, { new: true })
+    )
   },
   destroy: async (req, res) => {
     res.json(await User.findOneAndDelete({ _id: req.params._id }))
