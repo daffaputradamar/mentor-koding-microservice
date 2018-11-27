@@ -9,4 +9,4 @@ app.use(express.json())
 
 app.use('/user', userRouter)
 
-app.listen(4000, () => console.log('Service User is listening in 4000'))
+app.listen(process.env.PORT || 4000, () => console.log('Service User is listening in 4000'))
