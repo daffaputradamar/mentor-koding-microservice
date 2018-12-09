@@ -51,6 +51,8 @@ module.exports = {
   },
   search: async (req, res) => {
     const { skill, userId } = req.body
-    res.json(await User.find({ skills: skill, _id: { $ne: userId } }))
+    res.json(
+      await User.find({ skills: skill, _id: { $ne: userId }, isMentor: true })
+    )
   }
 }
