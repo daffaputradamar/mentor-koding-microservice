@@ -50,7 +50,7 @@ module.exports = {
     res.json({ user: found ? userDB : null })
   },
   search: async (req, res) => {
-    const { skill } = req.body
-    res.json(await User.find({ skills: skill }))
+    const { skill, userId } = req.body
+    res.json(await User.find({ skills: skill, _id: { $ne: userId } }))
   }
 }
